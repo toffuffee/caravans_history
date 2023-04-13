@@ -1,0 +1,6 @@
+__pycache__/
+models/__pycache__/
+controllers/__pycache__/
+
+[core]
+filemode = false

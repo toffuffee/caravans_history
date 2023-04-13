@@ -1,0 +1,79 @@
+<odoo>
+    <template id="history_edit" name="Developer`s Website">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <div class="container">
+                <form class="add_history_js form mb-5" t-attf-action="/edit/history/successful/#{editCurrentHistory.id}">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <h1>Редактирование истории</h1>
+                    <div class="fields">
+                        <div>
+                            <input t-att-value="editCurrentHistory.name" required="required" field="history-title" placeholder="Название темы" class="w-100 mb-3"/>
+                            <input t-att-value="editCurrentHistory.subtitle" required="required" field="history-description" placeholder="Описание" class="w-100 mb-3"/>
+
+                            <!-- <div class="quill-editr">
+                                <div id="toolbar">
+                                    <button class="ql-bold">Bold</button>
+                                    <button class="ql-italic">Italic</button>
+                                </div>
+                                <div id="editor">
+                                    <p>Hello World!</p>
+                                </div>
+                            </div> -->
+                            <textarea required="required" field="history-content" class="w-100" placeholder="История" rows="12"><t t-esc="editCurrentHistory.content"/></textarea>
+                        </div>
+                        <div>
+                                <span class="title mb-2">обложка</span>
+                                <div class="img w-100 mb-2 cover-preview add_image" field="image">
+                                    <img t-att-src="newUrl"/>
+                                    <label id="label-cover" for="image-for-preview" class="add_file absolute"/>
+                                    <input type="file" id="image-for-preview" class="d-none" accept="image/*"/>
+                                </div>
+
+                            <div field="history-category" t-att-value="editCurrentHistory.blog_id.id" required="required" class="select w-100 mb-3"><p class="title">Категория</p>
+                                <div class="content">
+                                    <t t-foreach="blog_ids" t-as="blog">
+                                        <option t-esc="blog.name" t-name="blog_name" t-att-value="blog.id"></option>
+                                    </t>
+                                </div>
+                            </div>
+                            <!-- <select name="history-category" required="required">
+                                
+                            </select> -->
+                        </div>
+                    </div>
+                    <button class="btn btn-primary main-btn active">Опубликовать</button>
+                </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- <record id="history_create_succesfull" model="website.page">
+        <field name="name">Thanks!</field>
+        <field name="type">qweb</field>
+        <field name="url">/history-create-succesfull</field>
+        <field name="website_published">True</field>
+        <field name="key">caravans_history.history_create_succesfull</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="caravans_history.history_create_succesfull">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Спасибо!</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        Ваша история была успешно добавлена!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record> -->
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="caravan_view_blog_post_form" model="ir.ui.view">
+        <field name="name">caravan_view_blog_post_form</field>
+        <field name="model">blog.post</field>
+        <field name="inherit_id" ref="website_blog.view_blog_post_form" />
+        <field name="arch" type="xml">
+        
+        <xpath expr="//field[@name='tag_ids']" position="after">
+            <field name="cover_image" 
+            widget="image" filename="filename"
+            />
+            <field name="filename" invisible="0" string="Название файла"/>
+        </xpath>
+        
+            <notebook 
+            position="inside"
+            >
+                <page name="extra_media" string="Extra Media">
+                    <group name="post_image_ids" string="Extra Media">
+                        <field name="post_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" add-label="Add a Media" nolabel="1"/>
+                    </group> 
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
